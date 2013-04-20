@@ -40,19 +40,16 @@ Bundle 'endwise.vim'
 Bundle 'matchit.zip'
 
 " vim-rake - :Rake, :A, :R like in rails.vim, but without rails
-Bundle 'tpope/vim-rake'
+" Bundle 'tpope/vim-rake'
 
 " vim-rake - :Rake, :A, :R like in rails.vim, but without rails
-Bundle 'tpope/vim-fugitive'
+" Bundle 'tpope/vim-fugitive'
 
 " vim-rails - awesome vim-rails integration
 Bundle 'tpope/vim-rails.git'
 
 " vim-ruby
 Bundle 'ruby.vim'
-
-" FuzzyFinder - finally I can go to a class or method like in RubyMine
-Bundle 'FuzzyFinder'
 
 " delimitMate - autoclosing of (", etc. that does not clash with endwise
 Bundle 'delimitMate.vim'
@@ -70,7 +67,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'https://github.com/nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-#autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
 
 
@@ -245,7 +242,7 @@ map <left>  <C-W><
 map <up>    <C-W>+
 map <down>  <C-W>-
 
-colorscheme jellybeans
+colorscheme default
 set background=dark
 
 " ruby autocomplete
