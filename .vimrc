@@ -1,255 +1,193 @@
-"==========
-"
-"==========
+" Leader
+let mapleader = " "
 
-" use 256 colors palette - must be set before color scheme is choosen
-set t_Co=256
+set nocompatible  " Use Vim settings, rather then Vi settings
+set nobackup
+set nowritebackup
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
 
-" Don't touch
-set nocompatible               " be iMproved
-filetype off                   " required!
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
 
-" setup Vundle
+" Declare bundles are handled via Vundle
+filetype off " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"==========
-" Plugins
-"==========
+" Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
-Bundle 'L9'
 
-" NerdTree -displays a neat file explorer window
-Bundle 'The-NERD-tree'
-" command-T - file opener/finder
-Bundle 'Command-T'
-" SuperTab for autcompletion in insert mode
-Bundle 'SuperTab'
+" Define bundles via Github repos
+Bundle 'croaky/vim-colors-github'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'nanotech/jellybeans.vim'
 
+Bundle 'scrooloose/nerdtree'
+Bundle 'danro/rename.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'nanki/treetop.vim'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'timcharper/textile.vim'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/greplace.vim'
+Bundle 'vim-scripts/tComment'
+Bundle 'xenoterracide/html.vim'
 
-"==========
-" Ruby on Rails
+filetype plugin indent on
 
-" FuzzyFinder - finally I can go to a class or method like in RubyMine
-Bundle 'FuzzyFinder'
+augroup vimrcEx
+  au!
 
-" vim-endwise - wisely add 'end' in ruby
-Bundle 'endwise.vim'
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
 
-" vim-matchit - better pair matching for the % command
-Bundle 'matchit.zip'
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+augroup END
 
-" vim-rake - :Rake, :A, :R like in rails.vim, but without rails
-" Bundle 'tpope/vim-rake'
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
-" vim-rake - :Rake, :A, :R like in rails.vim, but without rails
-" Bundle 'tpope/vim-fugitive'
+" Always show at least a few lines above or below current line
+set scrolloff=10
 
-" vim-rails - awesome vim-rails integration
-Bundle 'tpope/vim-rails.git'
-
-" vim-ruby
-Bundle 'ruby.vim'
-
-" delimitMate - autoclosing of (", etc. that does not clash with endwise
-Bundle 'delimitMate.vim'
-
-
-"=========
-" Others
-
-" syntastic - plugin for displaying syntax errors
-Bundle 'Syntastic'
-
-Bundle 'git://git.wincent.com/command-t.git'
-
-" Indentation guides
-Bundle 'https://github.com/nathanaelkane/vim-indent-guides'
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
-
-
-
-" ============================================
-" config
-" ============================================
-syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
-
-runtime macros/matchit.vim        " Load the matchit plugin.
-
-set encoding=utf-8                " Default encoding
-
-set showcmd                       " Display incomplete commands.
-set showmode                      " Display the mode you're in.
-
-set showbreak=...                 " Show break lines
-
-set backspace=indent,eol,start    " Intuitive backspacing.
-set hidden                        " Handle multiple buffers better.
-
-set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
-
-set ignorecase                    " Case-insensitive searching.
-set smartcase                     " But case-sensitive if expression contains a capital letter.
-
-set number                        " Show line numbers.
-set ruler                         " Show cursor position.
-
-set history=1000                  " remember more commands and search history
-set undolevels=1000               " use many muchos levels of undo
-
-set virtualedit=block             " allow the cursor to go into invalid places only in visual block mode
-
-" Display tabs and trailing spaces
-
-set incsearch                     " Highlight matches as you type.
-set hlsearch                      " Highlight matches.
-
-set wrap                          " Turn on line wrapping.
-set scrolloff=3                   " Show 3 lines of context around the cursor.
-
-set title                         " Set the terminal's title
-
-set visualbell                    " No beeping.
-
-set splitbelow splitright         " Splitting behavior
-
-set nobackup                      " Don't make a backup before overwriting a file.
-set noswapfile                    " Don't keep swap files
-set nowritebackup                 " And again.
-
-set tabstop=2                     " Global tab width.
-set shiftwidth=2                  " And again, related.
-set expandtab                     " Use spaces instead of tabs
-set shiftround                    " use multiple of shiftwidth when indenting with '<' and '>'
-set laststatus=2                  " Show the status line all the time
-
-set confirm                       " confirm on quit, etc.
-set autoread                      " automatically read changes from disk
-
-set diffopt+=iwhite               " ignore whitespace in vimdiff
-
-" Folding settings
-set foldmethod=indent             " indent based on syntax
-set foldnestmax=3                 " deepest fold is 3 levels
-set foldlevel=3
-set nofoldenable                  " dont fold by default
-
-"set matchpairs+=<:>               " add < and > to the chars thac can be navigated with %
-
-" Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
-" semicolon instead of a colon for commands
-"nnoremap ; :
-
-" j and k will navigate correctly in the wrapped lines
-nnoremap j gj
-nnoremap k gk
-
-" map .md files fo markdown
-au BufNewFile,BufRead *.md set filetype=markdown
-
-" automatically strip trailing whitespace for some file types
-autocmd FileType c,cpp,java,php,javascript,html,ruby autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-
-au! BufRead,BufNewFile *.json setfiletype json
-autocmd FileType json set equalprg=json_reformat
-
-" Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" set some different setting for the diff mode
-if &diff
-  colorscheme fu_patched " different scheme
-  set nonumber " no line numbers
+" Display extra whitespace
+set list
+set listchars=tab:>-
+" Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep when
+" available
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" NERDTree
-let g:NERDChristmasTree = 1
-let g:NERDTreeMapOpenSplit = "s"
-let g:NERDTreeMapOpenVSplit = "v"
+" Color scheme
+set t_Co=256
+let g:solarized_termcolors = 256
+colorscheme solarized 
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes = ['eruby']
+" Numbers
+set number
+set numberwidth=5
 
-" some plugin was overriding the redo command
-nmap <silent> <c-r> :redo<cr>
+" Snippets are activated by Shift+Tab
+let g:snippetsEmu_key = "<S-Tab>"
 
-"key mapping for saving file
-nmap <C-s> :w<CR>
-imap <C-s> <ESC>:w<CR><ESC>
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+set complete=.,w,t
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
-"map leadder p to nerdtree
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
+let g:Tlist_Ctags_Cmd="/usr/local/bin/ctags --exclude='*.js'"
 
-"Move line(s) of text down/up using Alt+j/k
-nnoremap <silent> <A-j> :m+<CR>==
-nnoremap <silent> <A-k> :m-2<CR>==
-inoremap <silent> <A-j> <Esc>:m+<CR>==gi
-inoremap <silent> <A-k> <Esc>:m-2<CR>==gi
-vnoremap <silent> <A-j> :m'>+<CR>gv=gv
-vnoremap <silent> <A-k> :m-2<CR>gv=gv
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!/usr/local/bin/ctags -R .<CR>
 
-" Format all file
-nmap <C-f> gg=<S-G>
+" Cucumber navigation commands
+autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
+autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
 
-" Command-t max height
-let g:CommandTMaxHeight = 15
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
 
-
-"  ---------------------------------------------------------------------------
-"  Ruby/Rails
-"  ---------------------------------------------------------------------------
-
-" Edit routes
-command! Rroutes :Redit config/routes.rb
-command! RTroutes :RTedit config/routes.rb
-
-" Edit factories
-command! Rfactories :Redit spec/factories.rb
-command! RTfactories :RTedit spec/factories.rb
-
-" Execute current buffer as ruby
-map <S-r> :w !ruby<CR>
-
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT ./<cr>
+" NerdTree
+map <C-n> :NERDTreeToggle<CR>
+" Close Vim if NerdTree is the only buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Change Vim's currect directory with NERDTree
+let g:NERDTreeChDirMode=2
 
 
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
+" Searching
+" Highlight as you type
+set incsearch
+" Case-insensitive
+set ignorecase
+" ...except when you used a upper case letter
+set smartcase
+" Highlight current search
+" set hlsearch
+" Then you can disable it
+" nmap <leader>q :nohlsearch<CR>
 
+" For moving lines (^] is a special character; use <M-k> and <M-j> if it works)
+nnoremap <M-k> mz:m-2<CR>`z==
+inoremap <M-j> <Esc>:m+<CR>==gi
+inoremap <M-k> <Esc>:m-2<CR>==gi
+vnoremap <M-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
+nnoremap <M-j> mz:m+<CR>`z==
+vnoremap <M-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
-" Resizing vertical splits
-map <right> <C-W>>
-map <left>  <C-W><
-map <up>    <C-W>+
-map <down>  <C-W>-
+" Jumping within broken lines like in other editors
+nmap j gj
+nmap k gk
 
-colorscheme default
-set background=dark
+" vim-rspec mappings
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
 
-" ruby autocomplete
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-" if you want buffer/rails/global completion you must add the following:
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" if you want rails support add the following in addition
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" if you want classes included in global completions add the following
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Set syntax highlighting for specific file types
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" Enable spellchecking for Markdown
+au BufRead,BufNewFile *.md setlocal spell
+
+" Automatically wrap at 80 characters for Markdown
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
