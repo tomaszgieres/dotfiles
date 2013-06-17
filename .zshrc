@@ -50,5 +50,5 @@ alias betr='bundle exec thin restart'
 alias betst='bundle exec thin stop'
 
 # Customize to your needs...
-export PATH=$PATH:/Users/tomaszgieres/.rvm/gems/ruby-1.9.3-p392/bin:/Users/tomaszgieres/.rvm/gems/ruby-1.9.3-p392@global/bin:/Users/tomaszgieres/.rvm/rubies/ruby-1.9.3-p392/bin:/Users/tomaszgieres/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+export PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3-p392@global/bin:$HOME/.rvm/rubies/ruby-1.9.3-p392/bin:$HOME/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 
