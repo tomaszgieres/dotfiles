@@ -36,10 +36,15 @@ plugins=(brew bundler gem git osx sublime tmux vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
-alias vim='mvim -v'
-alias ctags='/usr/local/bin/ctags'
+# OS X only
+if [[ $(uname) == 'FreeBSD' ]]; then
+  alias vim='mvim -v'
+  alias ctags='/usr/local/bin/ctags'
+fi
+
 alias tmux='tmux -2 -u'
 
+# Rails
 alias be='bundle exec'
 alias bers='bundle exec rails s'
 alias berc='bundle exec rails c'
