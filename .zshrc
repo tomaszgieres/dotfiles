@@ -1,3 +1,5 @@
+export LC_ALL="en_US.utf-8"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -37,7 +39,7 @@ plugins=(brew bundler gem git osx sublime tmux vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # OS X only
-if [[ $(uname) == 'FreeBSD' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then
   alias vim='mvim -v'
   alias ctags='/usr/local/bin/ctags'
 fi
