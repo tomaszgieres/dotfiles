@@ -12,7 +12,7 @@ if [ $1 == "system" ]; then
     echo "You're running Ubuntu"
     sudo apt-get install -f git tmux vim zsh > /dev/null
 
-  elif [[ "$unamestr" == 'FreeBSD' ]]; then
+  elif [[ "$unamestr" == 'Darwin' ]]; then
     echo "You're running OS X"
     echo "Installing homebrew first"
 
@@ -46,6 +46,11 @@ echo
 echo "# Creating symlinks for vim..."
 ln -sf $(pwd)/.vimrc ~/.vimrc && echo "[x] .vimrc"
 # ln -sf $(pwd)/.vim ~/.vim && echo "Created for .vim/"
+
+# rvm settings
+echo
+echo "# Creating symlinks for .rvmrc..."
+ln -sf $(pwd)/.rvmrc ~/.rvmrc && echo "[x] .rvmrc"
 
 # vundle
 echo
