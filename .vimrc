@@ -139,6 +139,9 @@ autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=rou
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" Use jj to exit insert mode
+imap jj <Esc>
+
 " NerdTree
 map <C-n> :NERDTreeToggle<CR>
 " Close Vim if NerdTree is the only buffer
