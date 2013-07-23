@@ -72,8 +72,9 @@ set expandtab
 set scrolloff=10
 
 " Display extra whitespace
-set list
-set listchars=tab:>-
+set list listchars=tab:»·,trail:·
+" Enter the Pilcrow mark by pressing Ctrl-k then PI
+
 " Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep when
 " available
 if executable("ag")
@@ -117,20 +118,17 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-" Vim doesn't use aliased ctags on osx, so there's my stupid workaround
-" otherwise try: :set shellcmdflag=-ic later
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+
+" Index ctags from any project, including those outside Rails
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
-    let g:Tlist_Ctags_Cmd="/usr/local/bin/ctags --exclude='*.js'"
+    map <Leader>ct :!/usr/local/bin/ctags -R .<CR>
   else
-    let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+    map <Leader>ct :!ctags -R .<CR>
   endif
 endif
-
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!/usr/local/bin/ctags -R .<CR>
 
 " Cucumber navigation commands
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
