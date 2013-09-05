@@ -68,6 +68,9 @@ alias betsd='bundle exec thin start -d'
 alias betr='bundle exec thin restart'
 alias betst='bundle exec thin stop'
 
+# Git
+alias gsrem='git ls-files --deleted -z | xargs -0 git rm' # git stage removed files
+
 # Customize to your needs...
 export PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3-p392@global/bin:$HOME/.rvm/rubies/ruby-1.9.3-p392/bin:$HOME/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 
