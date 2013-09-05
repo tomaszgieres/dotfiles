@@ -1,4 +1,5 @@
 export LC_ALL="en_US.utf-8"
+export PATH=/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -45,6 +46,9 @@ if [[ $(uname) == 'Darwin' ]]; then
 fi
 
 alias tmux='tmux -2 -u'
+
+alias postgres.start='pg_ctl -D /usr/local/var/postgres -l logfile start'
+alias postgres.stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
 # Rails
 alias be='bundle exec'
