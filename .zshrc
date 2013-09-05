@@ -47,6 +47,12 @@ export RUBY_FREE_MIN=100000
 
 source $HOME/.credentials.sh
 
+# Vagrant
+function vhaltall {
+  echo "Halting all VMs"
+  VBoxManage list runningvms | sed 's/"\(.*\)" .*/\1/g' | while read vmname; do echo "Halting $vmname"; VBoxManage controlvm "$vmname" poweroff; done
+}
+
 # OS X only
 if [[ $(uname) == 'Darwin' ]]; then
   alias vim='mvim -v'
