@@ -39,23 +39,23 @@ fi
 
 # tmux
 echo "# Creating symlinks for tmux..."
-ln -sf $(pwd)/.tmux.conf ~/.tmux.conf && echo "[x] .tmux.conf"
+ln -sf $(pwd)/.tmux.conf $HOME/.tmux.conf && echo "[x] .tmux.conf"
 
 # vim
 echo
 echo "# Creating symlinks for vim..."
-ln -sf $(pwd)/.vimrc ~/.vimrc && echo "[x] .vimrc"
-# ln -sf $(pwd)/.vim ~/.vim && echo "Created for .vim/"
+ln -sf $(pwd)/.vimrc $HOME/.vimrc && echo "[x] .vimrc"
+# ln -sf $(pwd)/.vim $HOME/.vim && echo "Created for .vim/"
 
 # rvm settings
 echo
 echo "# Creating symlinks for .rvmrc..."
-ln -sf $(pwd)/.rvmrc ~/.rvmrc && echo "[x] .rvmrc"
+ln -sf $(pwd)/.rvmrc $HOME/.rvmrc && echo "[x] .rvmrc"
 
 # vundle
 echo
 echo "### Is vundle installed?"
-VUNDLE_DIR="~/.vim/bundle/vundle"
+VUNDLE_DIR="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_DIR" ]; then
   echo "$VUNDLE_DIR exists, skipping..."
 else
@@ -67,7 +67,7 @@ fi
 # zsh
 echo
 echo "# Creating symlinks for zsh..."
-ln -sf $(pwd)/.zshrc ~/.zshrc && echo "[x] .zshrc"
+ln -sf $(pwd)/.zshrc $HOME/.zshrc && echo "[x] .zshrc"
 
 # oh-my-zsh
 echo
