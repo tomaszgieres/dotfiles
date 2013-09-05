@@ -39,6 +39,14 @@ plugins=(brew bundler gem git osx sublime tmux vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
+export RUBY_HEAP_MIN_SLOTS=2000000
+export RUBY_HEAP_SLOTS_INCREMENT=500000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=70000000
+export RUBY_FREE_MIN=100000
+
+source $HOME/.credentials.sh
+
 # OS X only
 if [[ $(uname) == 'Darwin' ]]; then
   alias vim='mvim -v'
