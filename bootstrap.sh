@@ -6,7 +6,7 @@
 # 3. zsh
 
 unamestr=`uname`
-if [ $1 == "system" ]; then
+if [[ $1 == "system" ]]; then
   echo "### Installing git, tmux, vim and zsh"
   if [[ "$unamestr" == 'Linux' ]]; then
     echo "You're running Ubuntu"
@@ -23,6 +23,7 @@ if [ $1 == "system" ]; then
     brew install macvim --override-system-vim && "[x] vim"
     brew install zsh && echo "[x] zsh"
 
+    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
   fi
 
   echo
@@ -60,9 +61,10 @@ if [ -d "$VUNDLE_DIR" ]; then
   echo "$VUNDLE_DIR exists, skipping..."
 else
   echo "$VUNDLE_DIR doesn't exist, downloading..."
-  mkdir -p "$VUNDLE_DIR"
   git clone https://github.com/gmarik/vundle.git "$VUNDLE_DIR" && echo "[x] vundle"
+  vim +BundleInstall +qall
 fi
+
 
 # zsh
 echo
@@ -79,10 +81,10 @@ else
   echo "$OH_MY_ZSH_DIR doesn't exist, downloading..."
   git clone git://github.com/robbyrussell/oh-my-zsh.git "$OH_MY_ZSH_DIR"
 
-  if [ $? -eq 0]; then
-    "[x] oh-my-zsh"
+  if [ $? -eq 0 ]; then
+    echo "[x] oh-my-zsh"
   else
-    "[ ] oh-my-zsh, downloading failed..."
+    echo "[ ] oh-my-zsh, downloading failed..."
   fi
 
 fi
