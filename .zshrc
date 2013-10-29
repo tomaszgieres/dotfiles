@@ -64,6 +64,8 @@ alias tmux='tmux -2 -u'
 alias postgres.start='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias postgres.stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
+alias elasticsearch.start='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml'
+
 # Rails
 alias be='bundle exec'
 alias bers='bundle exec rails s'
@@ -80,3 +82,6 @@ alias gsrem='git ls-files --deleted -z | xargs -0 git rm' # git stage removed fi
 # Customize to your needs...
 export PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3-p392@global/bin:$HOME/.rvm/rubies/ruby-1.9.3-p392/bin:$HOME/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
