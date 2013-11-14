@@ -65,8 +65,11 @@ alias postgres.start='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias postgres.stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
 alias elasticsearch.start='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml'
+alias memcached.start='/usr/local/opt/memcached/bin/memcached'
 
 # Rails
+alias z='zeus'
+
 alias be='bundle exec'
 alias bers='bundle exec rails s'
 alias berc='bundle exec rails c'
@@ -85,3 +88,4 @@ export PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export NO_ASSETS_DEBUG=true
