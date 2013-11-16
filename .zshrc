@@ -41,7 +41,6 @@ alias tmux='tmux -2 -u'
 ###
 # Rails
 ###
->>>>>>> Stashed changes
 alias z='zeus'
 
 alias be='bundle exec'
