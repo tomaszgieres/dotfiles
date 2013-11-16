@@ -36,7 +36,9 @@ if [[ $1 == "system" ]]; then
   fi
 fi
 
-
+# rails
+echo "# Creating symlinks for gemrc..."
+ln -sf $(pwd)/.gemrc $HOME/.gemrc && echo "[x] .gemrc"
 
 # tmux
 echo "# Creating symlinks for tmux..."
