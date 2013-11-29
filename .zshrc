@@ -1,5 +1,6 @@
 export LC_ALL="en_US.utf-8"
 export PATH=/usr/local/bin:$PATH
+export EDITOR=vim
 
 CREDENTIALS_FILE="$HOME/.credentials.sh"
 if [ -f $CREDENTIALS_FILE ]; then source $CREDENTIALS_FILE; fi
@@ -71,3 +72,12 @@ export PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+###
+# Functions
+###
+
+delete_torrents_garbage() {
+  find ~/Downloads/ -name '*.torrent' -delete
+}
