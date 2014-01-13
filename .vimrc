@@ -45,7 +45,6 @@ Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/greplace.vim'
 Bundle 'vim-scripts/tComment'
 Bundle 'xenoterracide/html.vim'
-Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
@@ -89,7 +88,7 @@ colorscheme solarized
 set background=dark
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
-highlight clear SignColumn " signcolumn has the same color as numline
+" highlight clear SignColumn " signcolumn has the same color as numline
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -131,6 +130,9 @@ if has("unix")
     map <Leader>ct :!ctags -R .<CR>
   endif
 endif
+
+" CtrlP
+" let g:ctrlp_cmd = 'CtrlPMRU'
 
 " Cucumber navigation commands
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
