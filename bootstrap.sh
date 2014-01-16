@@ -23,7 +23,7 @@ if [[ $1 == "system" ]]; then
     brew install macvim --override-system-vim && "[x] vim"
     brew install zsh && echo "[x] zsh"
 
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/
   fi
 
   echo
@@ -35,6 +35,10 @@ if [[ $1 == "system" ]]; then
     echo "[ ] zsh, something went wrong..."
   fi
 fi
+
+# git
+echo "# Creating symlinks for gemrc..."
+ln -sf $(pwd)/.gitconfig $HOME/.gitconfig && echo "[x] .gitconfig"
 
 # rails
 echo "# Creating symlinks for gemrc..."

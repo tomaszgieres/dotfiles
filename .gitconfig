@@ -1,0 +1,11 @@
+[alias]
+ignored = !git ls-files -v | grep "^[[:lower:]]"
+[user]
+	name = Tomasz Giereś
+	email = tomasz.gieres@lunarlogic.io
+[color]
+  ui = auto
+[alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = upstream
