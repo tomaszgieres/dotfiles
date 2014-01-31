@@ -37,6 +37,7 @@ if [[ $(uname) == 'Darwin' ]]; then
 fi
 
 alias tmux='tmux -2 -u'
+ack_rails() { ack "$*" --ignore-dir=log --ignore-dir=coverage --ignore-dir=tmp --ignore-file=is:tags }
 
 
 ###
@@ -77,6 +78,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ###
 # Functions
 ###
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 delete_torrents_garbage() {
   find ~/Downloads/ -name '*.torrent' -delete
