@@ -20,6 +20,7 @@ if [[ $1 == "system" ]]; then
 
     brew install git && echo "[x] git"
     brew install tmux && echo "[x] tmux"
+    brew install tmuxinator && echo "[x] tmuxinator"
     brew install macvim --override-system-vim && "[x] vim"
     brew install zsh && echo "[x] zsh"
 
@@ -47,6 +48,7 @@ ln -sf $(pwd)/.gemrc $HOME/.gemrc && echo "[x] .gemrc"
 # tmux
 echo "# Creating symlinks for tmux..."
 ln -sf $(pwd)/.tmux.conf $HOME/.tmux.conf && echo "[x] .tmux.conf"
+ln -sf $(pwd)/.tmuxinator $HOME/.tmuxinator && echo "Created for .tmuxinator/"
 
 # vim
 echo

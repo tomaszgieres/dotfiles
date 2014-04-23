@@ -2,6 +2,8 @@ export LC_ALL="en_US.utf-8"
 export PATH=/usr/local/bin:$PATH
 export EDITOR=vim
 
+set -o vi
+
 CREDENTIALS_FILE="$HOME/.credentials.sh"
 if [ -f $CREDENTIALS_FILE ]; then source $CREDENTIALS_FILE; fi
 
