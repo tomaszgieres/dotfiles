@@ -41,6 +41,11 @@ fi
 alias tmux='tmux -2 -u'
 ack_rails() { ack "$*" --ignore-dir=log --ignore-dir=coverage --ignore-dir=tmp --ignore-file=is:tags }
 
+###
+# Android
+###
+export ANDROID_HOME="/usr/local/Cellar/android-sdk/23.0.2/"
+
 
 ###
 # Rails
